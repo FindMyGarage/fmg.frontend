@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import image from "../../../assets/images/undraw_Online_organizer_re_156n-removebg-preview.png"
+import image from "../../../assets/images/undraw_File_manager_re_ms29-removebg-preview.png"
 import "./garage.css";
 import { onGetData, getCookies } from "../../../apicalling";
 const { useNotifications } = require("../../../../context/NotificationContext");
@@ -97,6 +97,9 @@ export default function NotFound() {
        <p className="cell-content">{(data.chargePerHour) * 24}</p>
       </div>
      </div>
+     <div className="btn-container">
+    <button className="button" onClick={underConstruction}>Edit</button>
+   </div>
     </div>
 
     <div className="right-div">
@@ -109,9 +112,7 @@ export default function NotFound() {
      </div>
     </div>
    </div>
-   <div className="btn-container">
-    <button className="button" onClick={underConstruction}>Edit</button>
-   </div>
+   
   </section >
  );
 }
