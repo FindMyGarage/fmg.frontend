@@ -72,11 +72,20 @@ export default function UserLogin() {
               <p className="cell-content">{firstName}</p>
             </div>
             <div className="div-cell">
+              <p className="cell-head">Middle Name</p>
+              {/* <p className="cell-content">{middleName}</p> */}
+            </div>
+            <div className="div-cell">
               <p className="cell-head">Last Name</p>
               <p className="cell-content">{lastName}</p>
             </div>
           </div>
+          
           <div className="div-row">
+          <div className="div-cell">
+              <p className="cell-head">User ID</p>
+              {/* <p className="cell-content">{middleName}</p> */}
+            </div>
             <div className="div-cell">
               <p className="cell-head">Phone</p>
               <p className="cell-content">{userName}</p>
