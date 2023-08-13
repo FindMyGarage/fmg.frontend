@@ -154,13 +154,14 @@ export default function UserLogin() {
               {/* name */}
 
               <div className="input_box">
-                <i className="uil uil-user"></i>
                 <input
                   type="text"
                   placeholder="Enter your name"
                   required
                   onChange={handleNameChange}
                 />
+                <i className="uil uil-user email"></i>
+
               </div>
 
               {/* role - (drop down with options "user" and "no_garage") */}
@@ -177,25 +178,26 @@ export default function UserLogin() {
                     Select your role
                   </option>
                   <option value="user">User</option>
-                  <option value="no_garage">No Garage</option>
+                  <option value="no_garage">Garage Owner</option>
                 </select>
               </div>
 
               {/* phone */}
 
               <div className="input_box">
-                <i className="uil uil-phone"></i>
                 <input
                   type="tel"
                   placeholder="Enter your phone number"
                   required
                   onChange={handlePhoneChange}
                 />
+                <i className="uil uil-phone email"></i>
+
               </div>
 
               {/* address */}
 
-              <div className="input_box">
+              {/* <div className="input_box">
                 <i className="uil uil-map-marker"></i>
                 <input
                   type="text"
@@ -203,18 +205,20 @@ export default function UserLogin() {
                   required
                   onChange={handleAddressChange}
                 />
-              </div>
+              </div> */}
 
               {/* licenseId */}
 
               <div className="input_box">
-                <i className="uil uil-envelope-alt email"></i>
+                
                 <input
                   type="text"
                   placeholder="Enter your license ID"
                   required
                   onChange={handleLicenseIdChange}
+                  
                 />
+                <i className="uil uil-envelope-alt email"></i>
                 {/* <i className="uil uil-id-card"></i> */}
               </div>
 
