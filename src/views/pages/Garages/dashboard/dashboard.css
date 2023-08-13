@@ -1,29 +1,43 @@
 /* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
 * {
   /* margin: 0;
     padding: 0; */
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+
 }
 
 body {
   background-color: #181818;
 }
+
 .top-part {
   text-align: center;
   color: #fff;
   padding: 20px 30px;
 }
-.garage-card-container {
-  margin-top: 2%;
-  display: flex;
-  width: 75%;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-  align-items: center;
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
 }
+
+.garage-card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
+}
+
+/* .garage-card-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    
+} */
 .garage-card {
   box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
   /* border: 5px #fff solid; */
@@ -31,95 +45,247 @@ body {
   margin: auto;
   text-align: center;
   border-radius: 5px;
+  margin-top: 40px;
+
 }
+
 .garage-card img {
   border-radius: 5px 5px 0px 0px;
-  width: 100%;
 }
+
 .garage-card h2 {
   color: #fff;
 }
+
 .garage-card .content-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
+
+.garage-card .content-row i {
+  color: #FFCC2A;
+}
+
 .garage-card .title {
   color: #fff;
   font-size: 18px;
   margin: 10px 20px;
 }
+
 .garage-card .data {
   color: #dbdbdbc7;
   font-size: 18px;
   margin: 10px 20px;
+
 }
+
+.garage-card p {
+  margin: 0px auto;
+}
+
 button {
   border: none;
   outline: 0;
   display: inline-block;
   padding: 8px;
-  color: white;
-  background-color: #7d2ae8;
+  /* color: white;
+    background-color: #7d2ae8; */
+  color: #181818;
+  background-color: #FFCC2A;
   text-align: center;
   cursor: pointer;
   width: 100%;
   font-size: 18px;
   transition: all 0.4s ease-out;
   border-radius: 0px 0px 5px 5px;
+
 }
 
 button:hover {
   opacity: 0.8;
 }
 
-.addGarageForm{
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5%;
-  width: 50%;
+.wrapper {
+  background-color: #2d2d2d;
+  width: 500px;
+  padding: 25px;
+  margin: 40px 0px 40px 50px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
 
-.addGarageForm h1{
+.wrapper h2 {
+  background: #474747;
+
+  color: #FFCC2A;
+  font-size: 24px;
+  padding: 10px;
+  margin-bottom: 8px;
   text-align: center;
-  color: #fff;
-  margin-bottom: 5%;
+  border: 1px inset #FFCC2A;
 }
 
-.addGarageForm form {
+.wrapper h4 {
+  padding-bottom: 5px;
+  color: #FFCC2A;
+}
+
+form select {
+  padding: 14px 10px 14px 10px;
+  width: 100%;
+  background: #474747;
+  border: 1px solid #0003;
+  outline: none;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  border-radius: 3px;
+  color: #e4e4e4;
+  text-align: center;
+
+}
+
+.input_group {
+  margin-bottom: 8px;
+  width: 100%;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  padding: 5px 0;
+}
+
+.input_box {
+  width: 100%;
+  margin-right: 12px;
+  position: relative;
+}
+
+.input_box:last-child {
+  margin-right: 0;
+}
+
+.input_box .name {
+  padding: 14px 10px 14px 50px;
+  width: 100%;
+  background: #474747;
+  border: 1px solid #0003;
+  outline: none;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  border-radius: 3px;
+  color: #ffffff;
+}
+
+.input_box .name:focus,
+.dob:focus {
+  -webkit-box-shadow: 0 0 2px 1px #FFCC2A;
+  -moz-box-shadow: 0 0 2px 1px #FFCC2A;
+  box-shadow: 0 0 2px 1px #FFCC2A;
+  border: 1px solid #FFCC2A;
+}
+
+.input_box .icon {
+  width: 48px;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  color: #333;
+  background-color: #f1f1f1;
+  border-radius: 2px 0 0 2px;
+  transition: 0.3s;
+  font-size: 20px;
+  pointer-events: none;
+  border: 1px solid #00000003;
+  border-right: none;
 }
 
-.addGarageForm form input{
-  padding: 15px 10px;
-  margin: 5px 50px;
-  background-color: #404258;
-  font-size: 1rem;
-  width: 80%;
+.name:focus+.icon {
+  background-color: #FFCC2A;
+  color: #fff;
+  border-right: 1px solid #FFCC2A;
+  border: none;
+  transition: 1s;
+}
+
+.dob {
+  width: 30%;
+  padding: 14px;
+  text-align: center;
+  background-color: #fcfcfc;
+  transition: 0.3s;
+  outline: none;
+  border: 1px solid #c0bfbf;
   border-radius: 3px;
-  box-shadow: 0 1px 3px rgba(142, 142, 142, 0.381),
-    0 1px 0 rgba(137, 137, 137, 0.337);
-  color: #ffffff86;
 }
 
-.addGarageForm form select{
-  padding: 15px 10px;
-  margin: 5px 50px;
-  background-color: #404258;
-  font-size: 1rem;
-  width: 80%;
-  border-radius: 3px;
-  box-shadow: 0 1px 3px rgba(142, 142, 142, 0.381),
-    0 1px 0 rgba(137, 137, 137, 0.337);
-  color: #ffffff86;
+.radio {
+  display: none;
 }
 
-.addGarageForm form button{
-  width: 60%;
-  margin-top: 30px;
-  margin-bottom: 30px;
+.input_box label {
+  width: 31%;
+  padding: 13px;
+  margin: 3px;
+  background-color: #fcfcfc;
+  display: inline-block;
+  /* float:left; */
+  text-align: center;
+  border: 1px solid #c0bfbf;
+}
+
+.input_box label:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  /* border-right: none; */
+}
+
+.input_box label:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.radio:checked+label {
+  background-color: #FFCC2A;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.input_box button {
+  width: 100%;
+  background-color: #FFCC2A;
+  border: none;
+  color: #fff;
+  padding: 15px;
+  border-right: 4px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.input_box button:hover {
+  cursor: pointer;
+  background-color: #ffcd2a90;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
+  width: 95px;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 50px #FFCC2A;
+  border-radius: 8px;
+}
+
+.wrapper {
+  position: fixed;
 }

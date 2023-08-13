@@ -18,11 +18,26 @@ body {
     grid-template-columns: 2fr 1fr;
 
 }
-.left-div{
+
+.left-div {
     background-color: #2d2d2d;
     margin: 50px 0px 50px 30px;
     border-radius: 10px;
     padding: 20px;
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+
+    50% {
+        transform: translatey(-10px);
+    }
+
+    100% {
+        transform: translatey(0px);
+    }
 }
 
 .div-row {
@@ -101,7 +116,9 @@ body {
 
 .profile-pic img {
     width: 90%;
-
+    transition: all 0.4s ease-in-out;
+    /* add animation float */
+    animation: float 6s ease-in-out infinite;
 }
 
 .btn-container {

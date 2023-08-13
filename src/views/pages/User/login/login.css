@@ -17,11 +17,19 @@
 
 }
 
+.home {
+    height: 100vh;
+}
+
 body {
     background-color: #181818;
-    background-image: url(../../../assets/images/Frame.png);
+    background-image: url("https://res.cloudinary.com/dcew0uqhb/image/upload/v1691915365/Frame_apy0fc.png");
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+.form_container {
+    border: 1px solid red
 }
 
 a {
@@ -137,15 +145,16 @@ a {
     justify-content: space-between;
 }
 
-.login_signup a{
-  color: #FFCC2A !important;
-  font-size: 12px !important;
-  cursor: pointer !important;
+.login_signup a {
+    color: #FFCC2A !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
 }
 
 .login_signup a:hover {
-  text-decoration: underline !important;
+    text-decoration: underline !important;
 }
+
 .checkbox {
     display: flex;
     column-gap: 8px;
@@ -171,22 +180,25 @@ a {
     border-radius: 10px;
     transition: 0.3s;
 }
+
 .form_container .button:hover {
     background-color: #E7992D;
 }
+
 .login_signup {
     font-size: 12px;
     text-align: center;
     margin-top: 15px;
 }
-form select{
-  padding: 10px;
-  width: 100%;
-  outline: none;
-  border: 1px solid #FFCC2A;
-  letter-spacing: 1px;
-  transition: 0.3s;
-  border-radius: 3px;
-  text-align: center;
-  
+
+form select {
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #FFCC2A;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    border-radius: 3px;
+    text-align: center;
+
 }

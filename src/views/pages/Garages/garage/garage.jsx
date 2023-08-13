@@ -49,7 +49,7 @@ export default function NotFound() {
 
     <div className="left-div">
      <div className="div-top">
-      <h3>Manage Garages</h3>
+      <h3>Manage Garage: {data.name}</h3>
       <Link to="/garage/dashboard"><a className="edit-btn">Back</a></Link>
      </div>
      <div className="div-row">

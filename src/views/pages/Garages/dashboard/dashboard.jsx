@@ -1,23 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { onGetData, onPostData, getCookies } from "../../../apicalling";
-import "./dashboard.css";
+import "./dashboard.css"; // Import the provided CSS file
 import image from "../../../assets/images/garage.jpg";
 const { useNotifications } = require("../../../../context/NotificationContext");
 
 export default function NotFound() {
-
-  const [name, setName] = React.useState("");
-  const [address, setAddress] = React.useState("");
-  const [lat, setLat] = React.useState(0);
-  const [long, setLong] = React.useState(0);
-  const [locationCategory, setLocationCategory] = React.useState("prime");
-  const [chargePerHour, setChargePerHour] = React.useState(0);
-  const [slots, setSlots] = React.useState(0);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [lat, setLat] = useState(0);
+  const [long, setLong] = useState(0);
+  const [locationCategory, setLocationCategory] = useState("prime");
+  const [chargePerHour, setChargePerHour] = useState(0);
+  const [slots, setSlots] = useState(0);
   const { createNotification } = useNotifications();
-
-
-  const [garages, setGarages] = React.useState([]);
+  const [garages, setGarages] = useState([]);
 
   useEffect(() => {
     const fetchGarages = async () => {
@@ -29,46 +26,37 @@ export default function NotFound() {
   }, []);
 
   const handleNameChange = (e) => {
-    e.preventDefault();
     setName(e.target.value);
   };
 
   const handleAddressChange = (e) => {
-    e.preventDefault();
     setAddress(e.target.value);
   };
 
   const handleLatChange = (e) => {
-    e.preventDefault();
     setLat(e.target.value);
   };
 
   const handleLongChange = (e) => {
-    e.preventDefault();
     setLong(e.target.value);
   };
 
   const handleLocationCategoryChange = (e) => {
-    e.preventDefault();
     setLocationCategory(e.target.value);
   };
 
   const handleChargePerHourChange = (e) => {
-    e.preventDefault();
     setChargePerHour(e.target.value);
   };
 
   const handleSlotsChange = (e) => {
-    e.preventDefault();
     setSlots(e.target.value);
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-
       const cookies = getCookies();
-
       const slotArray = [];
 
       for (let i = 0; i < slots; i++) {
@@ -87,6 +75,7 @@ export default function NotFound() {
         locationY: long,
         locationCategory: locationCategory,
         slots: slotArray,
+        images: ["https://res.cloudinary.com/dcew0uqhb/image/upload/v1691917298/2208_HD_GarageTrends_asgaq9_pue3up.png"],
       }
 
       const data = await onPostData("garages/new", garage);
@@ -94,11 +83,8 @@ export default function NotFound() {
       if (data.error) {
         createNotification("error", data.error);
       } else {
-        // redirect to booking page
         createNotification("success", "Garage created successfully");
-        // reload
         window.location.reload();
-
       }
     } catch (err) {
       createNotification("error", err.response.data.message);
@@ -110,84 +96,147 @@ export default function NotFound() {
       <div className="top-part">
         <h1>All Garages</h1>
       </div>
-      <div className="garage-card-container">
-        {garages &&
-          garages.map((garage, i) => {
-
-            return (
-              <div className="garage-card" key={i}>
-                <img src={image} alt="John" />
-                <h2>{garage.name}</h2>
-                <div className="content-container">
-
-                  <div className="content-row">
-                    <p className="title">Address :</p>
-                    <p className="data">{garage.address}</p>
-                  </div>
-
-                  {/* slots with status available */}
-
-                  <div className="content-row">
-                    <p className="title">Free Slots :</p>
-                    <p className="data">
-                      {/* map over garage.slots and return length of those items whose status is "available" */}
-                      {garage.slots.filter((slot) => slot.status === "available").length}
-                    </p>
-                  </div>
-
-                  <div className="content-row">
-                    <p className="title">Location :</p>
-                    <p className="data">{garage.locationCategory}</p>
-                  </div>
-                  <div className="content-row">
-                    <p className="title">Latitude :</p>
-                    <p className="data">{garage.locationX}</p>
-                  </div>
-                  <div className="content-row">
-                    <p className="title">Longitude :</p>
-                    <p className="data">{garage.locationY}</p>
-                  </div>
-
-
-
-                  <p>
-                    <Link to={"/garage/" + garage._id}><button style={{ width: "80%", marginTop: "10px" }}>Manage</button></Link>
-                  </p>
+      <div className="main-container">
+        <div className="right-div">
+          <div className="wrapper">
+            <h2>Create New Garage</h2>
+            <form onSubmit={handleSubmit}>
+              <h4>Enter Garage Details</h4>
+              <div className="input_group">
+                <div className="input_box">
+                  <input
+                    type="text"
+                    placeholder="Name of Garage"
+                    required
+                    className="name"
+                    onChange={handleNameChange}
+                  />
+                  <i className="fas fa-car icon" aria-hidden="true"></i>
                 </div>
               </div>
-            );
-          })}
+              {/* Other input fields... */}
+              {/* these include latitude, longitude and address */}
+              <div className="input_group">
+                <div className="input_box">
+                  <input
+                    type="text"
+                    placeholder="Address"
+                    required
+                    className="name"
+                    onChange={handleAddressChange}
+                  />
+                  <i className="fas fa-map-marker-alt icon" aria-hidden="true"></i>
+                </div>
+              </div>
+
+              <div className="input_group">
+                <div className="input_box">
+                  <input
+                    type="number"
+                    placeholder="Latitude"
+                    required
+                    className="name"
+                    onChange={handleLatChange}
+                  />
+                  <i className="fas fa-globe icon" aria-hidden="true"></i>
+                </div>
+                <div className="input_box">
+                  <input
+                    type="number"
+                    placeholder="Longitude"
+                    required
+                    className="name"
+                    onChange={handleLongChange}
+                  />
+                  <i className="fas fa-globe icon" aria-hidden="true"></i>
+                </div>
+              </div>
+              <select
+                name="locationCategory"
+                id="locationCategory"
+                value={locationCategory}
+                onChange={handleLocationCategoryChange}
+              >
+                <option value="prime">Prime</option>
+                <option value="normal">Normal</option>
+                <option value="outskirt">Outskirt</option>
+              </select>
+              <div className="input_group">
+                <div className="input_box">
+                  <input
+                    type="number"
+                    placeholder="Slots"
+                    required
+                    className="name"
+                    onChange={handleSlotsChange}
+                  />
+                  <i className="fas fa-car icon" aria-hidden="true"></i>
+                </div>
+                <div className="input_box">
+                  <input
+                    type="number"
+                    placeholder="Charge Per Hour"
+                    required
+                    className="name"
+                    onChange={handleChargePerHourChange}
+                  />
+                  <i className="fas fa-money-bill icon" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div className="input_group">
+                <div className="input_box">
+                  <button type="submit">Create</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div className="left-div">
+          <div className="garage-card-container">
+            {garages &&
+              garages.map((garage, i) => (
+                <div className="garage-card" key={i}>
+                  {console.log(garage.images[0])}
+                  <img src={garage.images[0]} alt="Garage" style={{ width: "100%" }} />
+                  <h2>{garage.name}</h2>
+                  <div className="content-container">
+                    <div className="content-row">
+                      <p className="title">
+                        <i className="fas fa-map-marker-alt"></i> Location :
+                      </p>
+                      <p className="data">{garage.address}</p>
+                    </div>
+                    <div className="content-row">
+                      <p className="title">
+                        <i className="fas fa-globe"></i> Latitude :
+                      </p>
+                      <p className="data">{garage.locationX}</p>
+                    </div>
+                    <div className="content-row">
+                      <p className="title">
+                        <i className="fas fa-globe"></i> Longitude :
+                      </p>
+                      <p className="data">{garage.locationY}</p>
+                    </div>
+                    <div className="content-row">
+                      <p className="title">
+                        <i className="fas fa-car"></i> Free Slots :
+                      </p>
+                      <p className="data">
+                        {garage.slots.filter((slot) => slot.status === "available").length}
+                      </p>
+                    </div>
+                  </div>
+                  <p>
+                    <Link to={"/garage/" + garage._id}>
+                      <button>Manage</button>
+                    </Link>
+                  </p>
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
-
-      <div className="addGarageForm">
-        <form onSubmit={handleSubmit}>
-
-          <h1>Create New Garage</h1>
-
-          {/* with handle changes as well */}
-
-          <input type="text" placeholder="Garage Name" onChange={handleNameChange} />
-          <input type="text" placeholder="Address" onChange={handleAddressChange} />
-          <input type="number" placeholder="Latitude" onChange={handleLatChange} />
-          <input type="number" placeholder="Longitude" onChange={handleLongChange} />
-          <input type="number" placeholder="Slots" onChange={handleSlotsChange} />
-          <input type="number" placeholder="Charge Per Hour" onChange={handleChargePerHourChange} />
-
-          {/* location category can have values  "prime", "normal", "outskirt" */}
-
-          <select name="locationCategory" id="locationCategory" onChange={handleLocationCategoryChange}>
-            <option value="prime">Prime</option>
-            <option value="normal">Normal</option>
-            <option value="outskirt">Outskirt</option>
-          </select>
-
-          <button>Create</button>
-
-          {/* form to create new garage ends */}
-
-        </form>
-      </div>
-
     </section>
   );
 }
