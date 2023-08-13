@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import landing from "../../assets/images/undraw_Online_organizer_re_156n-removebg-preview.png"
+import landing from "../../assets/images/undraw_Destinatio.png"
 
 import "./home.css";
 
@@ -11,13 +11,13 @@ export default function NotFound() {
    <header>
     <div className="container">
      <div className="logo">
-      <h3>Parkify</h3>
+      <h3>Find My Garage</h3>
      </div>
 
      <div className="links">
       <ul>
        <li><a href="/">Home</a></li>
-       <li><a href="/about">About</a></li>
+       <li><a href="/">Profile</a></li>
        <li><a href="#footer">Contact</a></li>
        <li><Link to="/user/login" className="btn"><i className="fas fa-sign-in-alt"></i> Sign In</Link></li>
       </ul>
@@ -69,7 +69,7 @@ export default function NotFound() {
       <div className="footer-col">
        <div className="footer-links">
         <h4>CONTACT US</h4>
-        <p> Hack-over-flow<br />
+        <p> High-on-Bugs<br />
          Kalyani Government Engineering College<br />
          Kalyani,Nadia <br />
          West Bengal <br />
