@@ -83,23 +83,28 @@ export default function NotFound() {
      </div>
      <div className="div-row">
 
-      <div className="div-cell">
+      {data.slots && <div className="div-cell">
        <p className="cell-head">
-        Charge per hour
+        Total Number of Slots
        </p>
-       <p className="cell-content">{data.chargePerHour}</p>
-      </div>
+       <p className="cell-content">{data.slots.length}</p>
+      </div>}
 
-      <div className="div-cell">
+      {/* return slots which have status available */}
+
+      {data.slots && <div className="div-cell">
        <p className="cell-head">
-        Daily Charge
+        Available Slots
        </p>
-       <p className="cell-content">{(data.chargePerHour) * 24}</p>
-      </div>
+       <p className="cell-content">{
+        data.slots.filter((slot) => slot.status === "available").length
+       }</p>
+      </div>}
+
      </div>
      <div className="btn-container">
-    <button className="button" onClick={underConstruction}>Edit</button>
-   </div>
+      <button className="button" onClick={underConstruction}>Edit</button>
+     </div>
     </div>
 
     <div className="right-div">
@@ -112,7 +117,7 @@ export default function NotFound() {
      </div>
     </div>
    </div>
-   
+
   </section >
  );
 }

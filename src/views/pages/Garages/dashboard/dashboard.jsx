@@ -22,6 +22,7 @@ export default function NotFound() {
   useEffect(() => {
     const fetchGarages = async () => {
       const data = await onGetData("garages/all");
+      console.log(data);
       setGarages(data.data.garages);
     };
     fetchGarages();
@@ -68,18 +69,24 @@ export default function NotFound() {
 
       const cookies = getCookies();
 
+      const slotArray = [];
+
+      for (let i = 0; i < slots; i++) {
+        const slot = {
+          name: name + "-A" + (i + 1),
+          type: "car",
+          chargePerHour: chargePerHour,
+        };
+        slotArray.push(slot);
+      }
+
       const garage = {
         name: name,
         address: address,
         locationX: lat,
         locationY: long,
         locationCategory: locationCategory,
-        chargePerHour: chargePerHour,
-        slots: slots,
-        //from cookies
-        email: cookies.email,
-        ownerUserId: cookies._id,
-
+        slots: slotArray,
       }
 
       const data = await onPostData("garages/new", garage);
@@ -112,6 +119,22 @@ export default function NotFound() {
                 <img src={image} alt="John" />
                 <h2>{garage.name}</h2>
                 <div className="content-container">
+
+                  <div className="content-row">
+                    <p className="title">Address :</p>
+                    <p className="data">{garage.address}</p>
+                  </div>
+
+                  {/* slots with status available */}
+
+                  <div className="content-row">
+                    <p className="title">Free Slots :</p>
+                    <p className="data">
+                      {/* map over garage.slots and return length of those items whose status is "available" */}
+                      {garage.slots.filter((slot) => slot.status === "available").length}
+                    </p>
+                  </div>
+
                   <div className="content-row">
                     <p className="title">Location :</p>
                     <p className="data">{garage.locationCategory}</p>

@@ -111,7 +111,7 @@ export default function UserLogin() {
 
       const user = {
         name: name,
-        role: role,
+        role: "garage_owner",
         phone: phone,
         address: address,
         licenseId: licenseId,
@@ -164,22 +164,16 @@ export default function UserLogin() {
 
               </div>
 
-              {/* role - (drop down with options "user" and "no_garage") */}
+              {/* address */}
 
               <div className="input_box">
-                {/* <i className="uil uil-user"></i> */}
-                <select
-                  name="role"
-                  id="role"
+                <input
+                  type="text"
+                  placeholder="Enter your address"
                   required
-                  onChange={handleRoleChange}
-                >
-                  <option value="" disabled selected>
-                    Select your role
-                  </option>
-                  <option value="user">User</option>
-                  <option value="no_garage">Garage Owner</option>
-                </select>
+                  onChange={handleAddressChange}
+                />
+                <i className="uil uil-map-marker"></i>
               </div>
 
               {/* phone */}
@@ -210,13 +204,13 @@ export default function UserLogin() {
               {/* licenseId */}
 
               <div className="input_box">
-                
+
                 <input
                   type="text"
                   placeholder="Enter your license ID"
                   required
                   onChange={handleLicenseIdChange}
-                  
+
                 />
                 <i className="uil uil-envelope-alt email"></i>
                 {/* <i className="uil uil-id-card"></i> */}

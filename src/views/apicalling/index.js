@@ -6,7 +6,7 @@ const cookies = new Cookies();
 // encrypt data
 // encrypt data
 
-const baseUrl = "http://localhost:6969/";
+const baseUrl = "http://13.212.20.156:7000/";
 
 // ------------------ API CALLING ------------------ //
 export const onPostData = async (url, data) => {
